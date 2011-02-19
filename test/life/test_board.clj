@@ -1,6 +1,7 @@
 (ns life.test-board
   (:use life.board
-        lazytest.deftest))
+        lazytest.deftest
+        [clojure.string :only (join)]))
 
 (defmacro >>> [& args]
   `(it ~(str args) ~@args))
@@ -36,12 +37,16 @@
                             ".##."
                             ".##."
                             "...."])
-        flip-1 (read-board [".#."
-                            ".#."
-                            ".#."])
-        flip-2 (read-board ["..."
-                            "###"
-                            "..."])]
+        flip-1 (read-board ["....."
+                            "..#.."
+                            "..#.."
+                            "..#.."
+                            "....."])
+        flip-2 (read-board ["....."
+                            "....."
+                            ".###."
+                            "....."
+                            "....."])]
     (is (= (update empty-board) empty-board))
     (is (= (update should-die) empty-board))
     (is (= (update stable) stable))

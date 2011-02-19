@@ -34,9 +34,9 @@
          (contains? (get cells row) column))))
 
 (defn cell-at [board [column row :as coords]]
-  (if (inside? board coords)
-    (get-in board [:cells row column])
-    dead))
+  (let [x (mod column (width board))
+        y (mod row (height board))]
+    (get-in board [:cells y x])))
 
 (defn- set-status [board [column row] status]
   (update-in board [:cells row column] (constantly status)))
