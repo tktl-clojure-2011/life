@@ -17,6 +17,17 @@
         cells (vec-repeat height row)]
     (Board. width height cells)))
 
+(defn height [board]
+  (:height board))
+
+(defn width [board]
+  (:width board))
+
+(defn coordinates [board]
+  (for [row (height board)
+        col (width board)]
+    [col row]))
+
 (defn- inside? [board [column row]]
   (let [cells (get board :cells)]
     (and (contains? cells row)
