@@ -24,8 +24,8 @@
   (:width board))
 
 (defn coordinates [board]
-  (for [row (height board)
-        col (width board)]
+  (for [row (range (height board))
+        col (range (width board))]
     [col row]))
 
 (defn- inside? [board [column row]]
