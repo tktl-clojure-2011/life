@@ -1,5 +1,5 @@
 (ns life.visual
-  (:use life.core)
+  (:use life.board)
   (:import [javax.swing JFrame JPanel SwingUtilities Timer]
            [java.awt Graphics Color Dimension]
            [java.awt.event ActionListener MouseAdapter]))
