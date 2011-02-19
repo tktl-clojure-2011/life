@@ -1,5 +1,5 @@
-(ns life.test-core
-  (:use life.core
+(ns life.test-board
+  (:use life.board
         lazytest.deftest))
 
 (defmacro >>> [& args]
