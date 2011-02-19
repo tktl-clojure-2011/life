@@ -42,6 +42,15 @@
 (defn build-board [cells]
   "]:}")
 
+(defn- show-cell [cell]
+  (condp = cell
+    dead \.
+    alive \#))
+
+(defn show-board [board]
+  (let [show-row #(apply str (map show-cell %))]
+   (map show-row (get board :cells))))
+
 (defn- read-cell [cell]
   (case cell
     \. dead
