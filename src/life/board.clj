@@ -5,6 +5,10 @@
 (def ^{:private true} alive :alive)
 (def ^{:private true} dead :dead)
 
+(def height :height)
+
+(def width :width)
+
 (def alive? (partial = alive))
 
 (def dead? (partial = dead))
@@ -16,12 +20,6 @@
   (let [row (vec-repeat width dead)
         cells (vec-repeat height row)]
     (Board. width height cells)))
-
-(defn height [board]
-  (:height board))
-
-(defn width [board]
-  (:width board))
 
 (defn coordinates [board]
   (for [row (range (height board))
