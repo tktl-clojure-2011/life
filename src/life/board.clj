@@ -2,8 +2,8 @@
 
 (defrecord Board [width height cells])
 
-(def alive :alive)
-(def dead :dead)
+(def ^{:private true} alive :alive)
+(def ^{:private true} dead :dead)
 
 (def alive? (partial = alive))
 
