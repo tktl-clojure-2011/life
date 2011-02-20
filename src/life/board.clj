@@ -26,11 +26,6 @@
         col (range (width board))]
     [col row]))
 
-(defn- inside? [board [column row]]
-  (let [cells (get board :cells)]
-    (and (contains? cells row)
-         (contains? (get cells row) column))))
-
 (defn cell-at [board [column row :as coords]]
   (let [x (mod column (width board))
         y (mod row (height board))]
