@@ -55,7 +55,7 @@
 
 (defn show-board [board]
   (let [show-row #(apply str (map show-cell %))]
-   (map show-row (get board :cells))))
+    (map show-row (get board :cells))))
 
 (defn- read-cell [cell]
   (case cell
