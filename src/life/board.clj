@@ -26,7 +26,7 @@
         col (range (width board))]
     [col row]))
 
-(defn cell-at [board [column row :as coords]]
+(defn cell-at [board [column row]]
   (let [x (mod column (width board))
         y (mod row (height board))]
     (get-in board [:cells y x])))
