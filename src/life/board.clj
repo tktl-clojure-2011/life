@@ -49,6 +49,8 @@
   (apply = (map count seq-of-seqs)))
 
 (defn build-board [cells]
+  {:pre [(same-length? cells)
+         (every? #{alive dead} (flatten cells))]}
   "]:}")
 
 (defn- show-cell [cell]
