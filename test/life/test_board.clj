@@ -14,17 +14,26 @@
     (is (alive? (cell-at boo [0 0])))
     (is (dead? (cell-at booo [0 0])))))
 
+(defn- cells-with-middle-removed [board]
+  (let [middle [(int (/ (width board) 2))
+                (int (/ (height board) 2))]]
+    (for [coords (coordinates board)
+          :when (not= coords middle)]
+      (cell-at board coords))))
+
 (deftest test-neighbourhood
   (let [board (read-board ["..."
                            ".#."
                            "..."])
-        upper-left-neighbourhood (read-board ["..."
-                                              "..."
-                                              "..#"])]
+        upper-left-neighbourhood
+        (cells-with-middle-removed
+          (read-board ["..."
+                       "..."
+                       "..#"]))]
     (is (= (neighbourhood board [0 0])
            upper-left-neighbourhood))
     (is (= (neighbourhood board [1 1])
-           board))))
+           (cells-with-middle-removed board)))))
 
 (deftest test-update
   (let [should-die (read-board ["..."
