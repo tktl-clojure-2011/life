@@ -8,7 +8,7 @@
 (def cell-height 30)
 (def update-delay 500)
 
-(defn make-frame []
+(defn- make-frame []
   (JFrame. "Game of Life"))
 
 (defn- color-for [cell]
@@ -21,11 +21,11 @@
     (.setColor (color-for (cell-at board coords)))
     (.fillRect (* cell-width x) (* cell-height y) cell-width cell-height)))
 
-(defn draw-canvas [board graphics]
+(defn- draw-canvas [board graphics]
   (doseq [coords (coordinates board)]
     (draw-cell board coords graphics)))
 
-(defn make-canvas [board]
+(defn- make-canvas [board]
   (let [canvas (proxy [JPanel ActionListener] []
                  (paintComponent [graphics]
                                  (do (proxy-super paintComponent graphics)
@@ -38,7 +38,7 @@
     (.start (Timer. update-delay canvas))
     canvas))
 
-(defn make-window [board]
+(defn- make-window [board]
   (let [frame (make-frame)
         canvas (make-canvas board)]
     (doto frame
@@ -46,7 +46,7 @@
       (.pack)
       (.show))))
 
-(defn make-game [board]
+(defn- make-game [board]
   (make-window (atom board)))
 
 (defn run-game [board]
