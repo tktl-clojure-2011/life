@@ -2,7 +2,7 @@
   (:use life.board)
   (:import [javax.swing JFrame JPanel SwingUtilities Timer]
            [java.awt Graphics Color Dimension]
-           [java.awt.event ActionListener MouseAdapter]))
+           [java.awt.event ActionListener]))
 
 (def cell-width 30)
 (def cell-height 30)
