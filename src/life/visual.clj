@@ -8,9 +8,6 @@
 (def cell-height 30)
 (def update-delay 500)
 
-(defn- make-frame []
-  (JFrame. "Game of Life"))
-
 (defn- color-for [cell]
   (if (dead? cell)
     Color/white
@@ -41,6 +38,9 @@
   (let [canvas (make-canvas-proxy board)]
     (.start (Timer. update-delay canvas))
     canvas))
+
+(defn- make-frame []
+  (JFrame. "Game of Life"))
 
 (defn- make-window [board]
   (let [frame (make-frame)
