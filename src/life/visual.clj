@@ -25,16 +25,20 @@
   (doseq [coords (coordinates board)]
     (draw-cell board coords graphics)))
 
+(defn- make-canvas-proxy [board]
+  (proxy [JPanel ActionListener] []
+    (paintComponent [graphics]
+      (do (proxy-super paintComponent graphics)
+        (draw-board @board graphics)))
+    (getPreferredSize [] 
+      (Dimension. (* cell-width (width @board))
+                  (* cell-height (height @board))))
+    (actionPerformed [event]
+      (swap! board update)
+      (.repaint this))))
+
 (defn- make-canvas [board]
-  (let [canvas (proxy [JPanel ActionListener] []
-                 (paintComponent [graphics]
-                                 (do (proxy-super paintComponent graphics)
-                                   (draw-board @board graphics)))
-                 (getPreferredSize [] (Dimension. (* cell-width (width @board))
-                                                  (* cell-height (height @board))))
-                 (actionPerformed [event]
-                                  (swap! board update)
-                                  (.repaint this)))]
+  (let [canvas (make-canvas-proxy board)]
     (.start (Timer. update-delay canvas))
     canvas))
 
