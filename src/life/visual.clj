@@ -21,7 +21,7 @@
     (.setColor (color-for (cell-at board coords)))
     (.fillRect (* cell-width x) (* cell-height y) cell-width cell-height)))
 
-(defn- draw-canvas [board graphics]
+(defn- draw-board [board graphics]
   (doseq [coords (coordinates board)]
     (draw-cell board coords graphics)))
 
@@ -29,7 +29,7 @@
   (let [canvas (proxy [JPanel ActionListener] []
                  (paintComponent [graphics]
                                  (do (proxy-super paintComponent graphics)
-                                   (draw-canvas @board graphics)))
+                                   (draw-board @board graphics)))
                  (getPreferredSize [] (Dimension. (* cell-width (width @board))
                                                   (* cell-height (height @board))))
                  (actionPerformed [event]
