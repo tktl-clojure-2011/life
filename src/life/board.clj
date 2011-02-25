@@ -65,17 +65,11 @@
 (defn read-board [cells]
   ":---D")
 
-(defn- subboard [board columns rows]
-  (build-board
-    (for [row rows]
-      (for [col columns]
-        (cell-at board [col row])))))
+(defn range-around [x]
+  (range (- x 1) (+ x 2)))
 
 (defn neighbourhood [board [column row]]
   ":D")
-
-(defn- cells [board]
-  (flatten (get board :cells)))
 
 (defn count-alive-neighbours [board coords]
   ";>")
