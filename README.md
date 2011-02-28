@@ -9,10 +9,10 @@ Running tests
 
 The unit tests can be run in two ways:
 
-a)  Run the tests automatically whenever you save a file:
+*   Run the tests automatically whenever you save a file:
 
         java -cp "src:test:classes:lib/*" lazytest.watch src test
 
-b)  Run the tests once:
+*   Run the tests once:
 
         java -cp "src:test:classes:lib/*" lazytest.main src test
