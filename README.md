@@ -13,6 +13,15 @@ The unit tests can be run in two ways:
 
         java -cp "src:test:classes:lib/*" lazytest.watch src test
 
+    or on Windows:
+
+        java -cp "src;test;classes;lib/*" lazytest.watch src test
+
 *   Run the tests once:
 
         java -cp "src:test:classes:lib/*" lazytest.main src test
+
+    or on Windows:
+
+        main -cp "src;test;classes;lib/*" lazytest.main src test
+
